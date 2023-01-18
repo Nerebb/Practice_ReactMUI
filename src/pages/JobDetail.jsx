@@ -1,10 +1,8 @@
-import { Modal, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import DetailJobCard from "../components/DetailJobCard";
 import fetchData from "../data/fetchData";
-import BaseLayout from "./BaseLayout";
 
 function JobDetail() {
   const [curJob, setCurJob] = useState();
