@@ -18,6 +18,7 @@ function AppThemeProvider({ children }) {
                 secondary: deepPurple,
                 background: {
                   default: deepPurple[50],
+                  login: deepPurple[100],
                 },
                 button: {
                   active: deepPurple[300],
@@ -34,8 +35,9 @@ function AppThemeProvider({ children }) {
                 primary: grey,
                 secondary: grey,
                 background: {
-                  default : grey[800],
-                  body: 'rgba(255, 255, 255, 0.3)',
+                  default: grey[800],
+                  login: grey[500],
+                  body: "rgba(255, 255, 255, 0.3)",
                 },
                 text: {
                   primary: common.white,

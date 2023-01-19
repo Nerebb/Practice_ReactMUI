@@ -94,9 +94,10 @@ export default function ButtonAppBar() {
             sx={{
               fontWeight: 700,
               px: 5,
-              color:(theme)=> theme.palette.text.primary,
-              bgcolor:(theme)=> theme.palette.background.default
+              color: (theme) => theme.palette.text.primary,
+              bgcolor: (theme) => theme.palette.background.default,
             }}
+            onClick={() => navigate("/login")}
           >
             Login
           </Button>

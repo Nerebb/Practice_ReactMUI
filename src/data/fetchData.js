@@ -1,4 +1,5 @@
 import srcData from "../data/sourceData.json";
+import userData from "../data/user.json";
 
 async function getData(curPage, params) {
   try {
@@ -31,6 +32,16 @@ async function getJobDetail(id) {
   return selectedJob;
 }
 
-const fetchData = { getData, getJobDetail };
+async function getUser(user) {
+  const { Username, Password } = user;
+  const isValid = userData.some(
+    (i) => i.Username === Username && i.Password === Password
+  );
+  const message = isValid
+    ? "Login succeed"
+    : "Username or Password not correct";
+  return message;
+}
+const fetchData = { getData, getJobDetail, getUser };
 
 export default fetchData;
