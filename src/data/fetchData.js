@@ -9,16 +9,16 @@ async function getData(curPage, params) {
         i.skills.some((string) => string.includes(params))
       );
       resData =
-        filteredJobs.length > 6
+        filteredJobs.length > 7
           ? {
-              data: filteredJobs.slice((curPage - 1) * 6, curPage * 6 - 1),
-              totalPages: Math.floor(srcData.length / 5 + 1),
+              data: filteredJobs.slice((curPage - 1) * 7, curPage * 7 - 1),
+              totalPages: Math.floor(srcData.length / 5),
             }
           : { data: filteredJobs, totalPages: 0 };
     } else {
       resData = {
-        data: srcData.slice((curPage - 1) * 6, curPage * 6 - 1),
-        totalPages: Math.floor(srcData.length / 5 + 1),
+        data: srcData.slice((curPage - 1) * 7, curPage * 7 - 1),
+        totalPages: Math.floor(srcData.length / 5),
       };
     }
     return resData;

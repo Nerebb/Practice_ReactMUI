@@ -6,7 +6,11 @@ import Button from "@mui/material/Button";
 import SearchIcon from "@mui/icons-material/Search";
 import InputBase from "@mui/material/InputBase";
 import { styled, alpha } from "@mui/material/styles";
-import { SearchContext, ThemeModeContext } from "../useContext/GlobalContext";
+import {
+  AuthContext,
+  SearchContext,
+  ThemeModeContext,
+} from "../useContext/GlobalContext";
 import { useNavigate } from "react-router-dom";
 import { Switch, Typography } from "@mui/material";
 
@@ -53,6 +57,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function ButtonAppBar() {
+  const { isLogin, setIsLogin } = useContext(AuthContext);
   const { themeMode, setThemeMode } = useContext(ThemeModeContext);
   const { handleSkillFilter } = useContext(SearchContext);
   const navigate = useNavigate();
@@ -97,9 +102,9 @@ export default function ButtonAppBar() {
               color: (theme) => theme.palette.text.primary,
               bgcolor: (theme) => theme.palette.background.default,
             }}
-            onClick={() => navigate("/login")}
+            onClick={() => (isLogin ? setIsLogin(false) : navigate("/login"))}
           >
-            Login
+            {isLogin ? "Logout" : "Login"}
           </Button>
           <Switch
             onClick={() =>

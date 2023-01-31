@@ -5,10 +5,17 @@ import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import { Button, Chip } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../useContext/GlobalContext";
 
 function JobCard({ data, onClick }) {
   const { title, skills, description, id } = data;
+  const { isLogin } = useContext(AuthContext);
   const navigate = useNavigate();
+
+  function handleLearnMore() {
+    isLogin ? navigate(`/job/${id}`) : navigate("/login");
+  }
   return (
     <Card
       sx={{
@@ -53,9 +60,9 @@ function JobCard({ data, onClick }) {
             sx={{
               px: 2,
               fontWeight: 700,
-              color:(theme)=> theme.palette.text.secondary
+              color: (theme) => theme.palette.text.secondary,
             }}
-            onClick={()=> navigate(`/job/${id}`)}
+            onClick={() => handleLearnMore()}
           >
             Learn more
           </Button>

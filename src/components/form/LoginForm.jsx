@@ -18,6 +18,8 @@ import yup from "../../useContext/Validate";
 import { useNavigate } from "react-router-dom";
 import fetchData from "../../data/fetchData";
 import AlertModal from "./Alert";
+import { useContext } from "react";
+import { AuthContext } from "../../useContext/GlobalContext";
 
 const loginSchema = yup.object().shape({
   Username: yup.string().required("Required"),
@@ -27,7 +29,7 @@ const loginSchema = yup.object().shape({
 function LoginForm() {
   const [showPassword, setShowPassword] = useState(false);
   const [loginStatus, setLoginStatus] = useState({ Alert: false, message: "" });
-  const [isLogin, setIsLogin] = useState(false);
+  const { isLogin, setIsLogin } = useContext(AuthContext);
   const navigate = useNavigate();
   const defaultValues = {
     Username: "Admin",
@@ -42,8 +44,10 @@ function LoginForm() {
   async function handleLogin(user) {
     const message = await fetchData.getUser(user);
     const Alert = message === "Login succeed" ? true : false;
-    setIsLogin(true);
-    setLoginStatus({ Alert, message });
+    if (message === "Login succeed") {
+      setIsLogin(true);
+      setLoginStatus({ Alert, message });
+    }
   }
 
   const onSubmit = (data) => handleLogin(data);

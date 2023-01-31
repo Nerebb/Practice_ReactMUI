@@ -26,6 +26,7 @@ function Home() {
           color="primary"
           onChange={(_, value) => setCurPage(value)}
           sx={{
+            mt: 2,
             ul: {
               justifyContent: "center",
             },

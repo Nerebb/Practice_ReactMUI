@@ -16,7 +16,6 @@ function JobDetail() {
     };
     fetchedData();
   }, [id]);
-  console.log(curJob);
   return (
     <Box
       onClick={() => navigate("/")}
